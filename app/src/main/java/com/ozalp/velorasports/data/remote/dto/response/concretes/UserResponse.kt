@@ -1,4 +1,4 @@
-package com.ozalp.velorasports.domain.dto.response.concretes
+package com.ozalp.velorasports.data.remote.dto.response.concretes
 
 data class UserResponse(
     val firstName: String,

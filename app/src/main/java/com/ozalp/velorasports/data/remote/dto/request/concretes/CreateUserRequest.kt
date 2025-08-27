@@ -1,4 +1,4 @@
-package com.ozalp.velorasports.domain.dto.request.concretes
+package com.ozalp.velorasports.data.remote.dto.request.concretes
 
 data class CreateUserRequest(
     val email: String,
