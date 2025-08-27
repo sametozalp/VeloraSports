@@ -12,10 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ozalp.velorasports.presentation.compose.ChooseOrganizationScreen
 import com.ozalp.velorasports.presentation.compose.HomeScreen
+import com.ozalp.velorasports.presentation.compose.LoginScreen
+import com.ozalp.velorasports.presentation.compose.RegisterScreen
+import com.ozalp.velorasports.presentation.destination.concretes.ChooseOrganizationDestination
+import com.ozalp.velorasports.presentation.destination.concretes.HomeDestination
 import com.ozalp.velorasports.presentation.destination.concretes.LoginDestination
 import com.ozalp.velorasports.presentation.destination.concretes.RegisterDestination
-import com.ozalp.velorasports.presentation.destination.concretes.ChooseOrganizationDestination
 
 @Composable
 fun SportCenterNavController(modifier: Modifier = Modifier) {
@@ -38,19 +42,25 @@ fun SportCenterNavController(modifier: Modifier = Modifier) {
         ) {
 
             composable(LoginDestination.routeWithArgs) {
-                //LoginScreen()
-                //RegisterScreen()
-                //FitManageScreen()
-                HomeScreen()
+                LoginScreen(onLoginClick = {
+                    navController.navigate(ChooseOrganizationDestination.routeWithArgs)
+                }, onRegisterClick = {
+                    navController.navigate(RegisterDestination.routeWithArgs)
+                })
 
             }
 
             composable(RegisterDestination.routeWithArgs) {
+                RegisterScreen()
 
             }
 
             composable(ChooseOrganizationDestination.routeWithArgs) {
+                ChooseOrganizationScreen()
+            }
 
+            composable(HomeDestination.routeWithArgs) {
+                HomeScreen()
             }
 
         }
