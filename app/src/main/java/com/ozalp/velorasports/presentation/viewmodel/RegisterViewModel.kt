@@ -9,13 +9,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(val getUserUseCase: GetUserUseCase) : ViewModel() {
+class RegisterViewModel @Inject constructor() : ViewModel() {
 
     fun createUser(createUserRequest: CreateUserRequest) {
 
         viewModelScope.launch {
 
-            getUserUseCase.invoke(createUserRequest)
+            //getUserUseCase.invoke(createUserRequest)
 
         }
     }

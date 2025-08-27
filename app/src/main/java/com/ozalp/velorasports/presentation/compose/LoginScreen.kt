@@ -44,16 +44,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ozalp.velorasports.R
+import com.ozalp.velorasports.presentation.viewmodel.LoginViewModel
 import com.ozalp.velorasports.ui.theme.LightGrayBg
 import com.ozalp.velorasports.ui.theme.Orange
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
+    viewModel: LoginViewModel = hiltViewModel(),
     onLoginClick: () -> Unit = {},
     onRegisterClick: () -> Unit = {},
-    onForgotPasswordClick: () -> Unit = {}
+    onForgotPasswordClick: () -> Unit = {},
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }

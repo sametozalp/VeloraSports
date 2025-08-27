@@ -50,7 +50,6 @@ import com.ozalp.velorasports.data.remote.dto.request.concretes.CreateUserReques
 import com.ozalp.velorasports.presentation.viewmodel.RegisterViewModel
 import com.ozalp.velorasports.ui.theme.Orange
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
 

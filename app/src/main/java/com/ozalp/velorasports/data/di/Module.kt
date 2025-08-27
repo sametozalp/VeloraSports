@@ -4,6 +4,7 @@ import com.ozalp.velorasports.data.remote.api.UserAPI
 import com.ozalp.velorasports.data.repository.UserRepositoryImpl
 import com.ozalp.velorasports.domain.repository.UserRepository
 import com.ozalp.velorasports.domain.usecase.GetUserUseCase
+import com.ozalp.velorasports.presentation.viewmodel.RegisterViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
