@@ -69,15 +69,19 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // coil
     implementation("io.coil-kt:coil-compose:2.7.0")
 
+    // material design
     implementation("androidx.compose.material:material-icons-core:1.6.4")
     implementation("androidx.compose.material:material-icons-extended:1.6.4")
+    implementation("androidx.compose.material3:material3:1.2.0")
+
+    // hilt
     implementation("com.google.dagger:hilt-android:2.49")
-
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
     kapt("com.google.dagger:hilt-compiler:2.49")
 
+    // gson
     implementation("com.google.code.gson:gson:2.13.1")
 }

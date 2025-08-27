@@ -12,6 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ozalp.velorasports.presentation.compose.HomeScreen
+import com.ozalp.velorasports.presentation.destination.concretes.LoginDestination
+import com.ozalp.velorasports.presentation.destination.concretes.RegisterDestination
+import com.ozalp.velorasports.presentation.destination.concretes.ChooseOrganizationDestination
 
 @Composable
 fun SportCenterNavController(modifier: Modifier = Modifier) {
@@ -30,10 +34,22 @@ fun SportCenterNavController(modifier: Modifier = Modifier) {
         NavHost(
             navController = navController,
             modifier = modifier.padding(innerPadding),
-            startDestination = ""
+            startDestination = LoginDestination.routeWithArgs
         ) {
 
-            composable("") {
+            composable(LoginDestination.routeWithArgs) {
+                //LoginScreen()
+                //RegisterScreen()
+                //FitManageScreen()
+                HomeScreen()
+
+            }
+
+            composable(RegisterDestination.routeWithArgs) {
+
+            }
+
+            composable(ChooseOrganizationDestination.routeWithArgs) {
 
             }
 
