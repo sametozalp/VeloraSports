@@ -44,12 +44,15 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ozalp.velorasports.R
+import com.ozalp.velorasports.data.remote.dto.request.concretes.CreateUserRequest
+import com.ozalp.velorasports.presentation.viewmodel.RegisterViewModel
 import com.ozalp.velorasports.ui.theme.Orange
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
 
     val scrollState = rememberScrollState()
 
@@ -206,7 +209,9 @@ fun RegisterScreen() {
 
                     // Create Account Button
                     Button(
-                        onClick = { /* Hesap oluştur işlemi */ },
+                        onClick = {
+                            viewModel.createUser(CreateUserRequest("dsa@gmail.com","samet","ozalp","123465","5441234564"))
+                        },
                         colors = ButtonDefaults.buttonColors(containerColor = Orange),
                         shape = RoundedCornerShape(50),
                         modifier = Modifier
