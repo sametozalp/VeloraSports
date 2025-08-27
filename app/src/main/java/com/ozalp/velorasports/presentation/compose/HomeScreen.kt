@@ -56,12 +56,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.ozalp.velorasports.ui.theme.LightGrayBg
+import com.ozalp.velorasports.ui.theme.Orange
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
     Scaffold(
-        containerColor = Color(0xFFF5F5F5),
+        containerColor = LightGrayBg,
         bottomBar = { BottomNavigationBar2() },
         topBar = {
             TopAppBar(
@@ -114,7 +116,7 @@ fun HomeScreen() {
             // Başla Butonu
             Button(
                 onClick = { /* Start Training */ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF6600)),
+                colors = ButtonDefaults.buttonColors(containerColor = Orange),
                 shape = RoundedCornerShape(50),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -150,7 +152,7 @@ fun GymProfileCard() {
             Text("İstanbul • 52 üye • Aktif", color = Color.Gray, fontSize = 13.sp)
         }
         Surface(
-            color = Color(0xFFF5F5F5),
+            color = LightGrayBg,
             shape = RoundedCornerShape(50),
             modifier = Modifier
                 .padding(start = 8.dp)
@@ -168,7 +170,7 @@ fun GymProfileCard() {
 @Composable
 fun WelcomeBanner() {
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFE0B2)),
+        colors = CardDefaults.cardColors(containerColor = LightGrayBg),
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -235,7 +237,7 @@ fun QuickMenuItem(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = Color(0xFFFF6600),
+                tint = Orange,
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -285,7 +287,7 @@ fun SessionCard(title: String, time: String, trainer: String) {
             Icon(
                 Icons.Filled.FitnessCenter,
                 contentDescription = null,
-                tint = Color(0xFFFF6600),
+                tint = Orange,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(12.dp))
@@ -340,7 +342,7 @@ fun TrainerCard(name: String, specialty: String) {
                 Text(specialty, color = Color.Gray, fontSize = 13.sp)
             }
             TextButton(onClick = { }) {
-                Text("Mesaj", color = Color(0xFFFF6600))
+                Text("Mesaj", color = Orange)
             }
         }
     }
@@ -357,7 +359,7 @@ fun SectionTitle(title: String, action: String) {
         Text(
             action,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFFFF6600),
+            color = Orange,
             fontSize = 14.sp
         )
     }

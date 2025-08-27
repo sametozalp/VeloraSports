@@ -42,6 +42,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ozalp.velorasports.ui.theme.LightGrayBg
+import com.ozalp.velorasports.ui.theme.Orange
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,8 +55,7 @@ fun LoginScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    val orange = Color(0xFFFF6600)
-    val textFieldBg = Color(0xFFF2F2F2)
+    //val textFieldBg = Color(0xFFF2F2F2)
 
     Box(
         modifier = Modifier
@@ -76,7 +77,7 @@ fun LoginScreen(
                 Box(
                     modifier = Modifier
                         .size(40.dp)
-                        .background(orange, shape = CircleShape),
+                        .background(Orange, shape = CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -126,7 +127,7 @@ fun LoginScreen(
                         singleLine = true,
                         shape = RoundedCornerShape(12.dp),
                         colors = TextFieldDefaults.textFieldColors(
-                            containerColor = textFieldBg,
+                            containerColor = LightGrayBg,
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
@@ -145,7 +146,7 @@ fun LoginScreen(
                         visualTransformation = PasswordVisualTransformation(),
                         shape = RoundedCornerShape(12.dp),
                         colors = TextFieldDefaults.textFieldColors(
-                            containerColor = textFieldBg,
+                            containerColor = LightGrayBg,
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
@@ -160,14 +161,14 @@ fun LoginScreen(
                         horizontalArrangement = Arrangement.End
                     ) {
                         TextButton(onClick = onForgotPasswordClick, contentPadding = PaddingValues(0.dp)) {
-                            Text("Şifremi Unuttum", color = orange, fontSize = 13.sp)
+                            Text("Şifremi Unuttum", color = Orange, fontSize = 13.sp)
                         }
                     }
 
                     // Giriş Yap
                     Button(
                         onClick = onLoginClick,
-                        colors = ButtonDefaults.buttonColors(containerColor = orange),
+                        colors = ButtonDefaults.buttonColors(containerColor = Orange),
                         shape = RoundedCornerShape(50),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -211,7 +212,7 @@ fun LoginScreen(
                         Text("Hesabın yok mu?", fontSize = 14.sp, color = Color.Gray)
                         Spacer(modifier = Modifier.width(4.dp))
                         TextButton(onClick = onRegisterClick, contentPadding = PaddingValues(0.dp)) {
-                            Text("Kayıt Ol", color = orange, fontSize = 14.sp)
+                            Text("Kayıt Ol", color = Orange, fontSize = 14.sp)
                         }
                     }
                 }
