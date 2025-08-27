@@ -52,10 +52,11 @@ fun RegisterScreen() {
 
     val scrollState = rememberScrollState()
 
-    var name by remember { mutableStateOf("") }
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var isAthlete by remember { mutableStateOf(true) }
+//    var isAthlete by remember { mutableStateOf(true) }
 
     Box(
         modifier = Modifier
@@ -114,14 +115,30 @@ fun RegisterScreen() {
                     )
 
                     // Name Input
-                    OutlinedTextField(
-                        value = name,
-                        onValueChange = { name = it },
-                        placeholder = { Text("Adınızı girin") },
-                        leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
+                    Row(
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
-                    )
+                        horizontalArrangement = Arrangement.spacedBy(8.dp) // TextField'lar arası boşluk
+                    ) {
+                        // name input
+                        OutlinedTextField(
+                            value = firstName,
+                            onValueChange = { firstName = it },
+                            placeholder = { Text("Ad") },
+                            leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+
+                        // surname input
+                        OutlinedTextField(
+                            value = lastName,
+                            onValueChange = { lastName = it },
+                            placeholder = { Text("Soyad") },
+                            leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(12.dp))
 
@@ -129,7 +146,7 @@ fun RegisterScreen() {
                     OutlinedTextField(
                         value = email,
                         onValueChange = { email = it },
-                        placeholder = { Text("ornek@eposta.com") },
+                        placeholder = { Text("example@mail.com") },
                         leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp)
@@ -148,37 +165,37 @@ fun RegisterScreen() {
                         shape = RoundedCornerShape(12.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(20.dp))
+//                    Spacer(modifier = Modifier.height(20.dp))
 
-                    // Toggle Atlet / Antrenör
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Button(
-                            onClick = { isAthlete = true },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = if (isAthlete) Orange else Color.White,
-                                contentColor = if (isAthlete) Color.White else Color.Black
-                            ),
-                            shape = RoundedCornerShape(50),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Text("Atlet")
-                        }
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Button(
-                            onClick = { isAthlete = false },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = if (!isAthlete) Orange else Color.White,
-                                contentColor = if (!isAthlete) Color.White else Color.Black
-                            ),
-                            shape = RoundedCornerShape(50),
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Text("Antrenör")
-                        }
-                    }
+//                    // Toggle Atlet / Antrenör
+//                    Row(
+//                        modifier = Modifier.fillMaxWidth(),
+//                        horizontalArrangement = Arrangement.Center
+//                    ) {
+//                        Button(
+//                            onClick = { isAthlete = true },
+//                            colors = ButtonDefaults.buttonColors(
+//                                containerColor = if (isAthlete) Orange else Color.White,
+//                                contentColor = if (isAthlete) Color.White else Color.Black
+//                            ),
+//                            shape = RoundedCornerShape(50),
+//                            modifier = Modifier.weight(1f)
+//                        ) {
+//                            Text("Atlet")
+//                        }
+//                        Spacer(modifier = Modifier.width(8.dp))
+//                        Button(
+//                            onClick = { isAthlete = false },
+//                            colors = ButtonDefaults.buttonColors(
+//                                containerColor = if (!isAthlete) Orange else Color.White,
+//                                contentColor = if (!isAthlete) Color.White else Color.Black
+//                            ),
+//                            shape = RoundedCornerShape(50),
+//                            modifier = Modifier.weight(1f)
+//                        ) {
+//                            Text("Antrenör")
+//                        }
+//                    }
 
                     Spacer(modifier = Modifier.height(20.dp))
 
