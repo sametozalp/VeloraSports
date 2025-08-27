@@ -38,10 +38,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ozalp.velorasports.R
 import com.ozalp.velorasports.ui.theme.LightGrayBg
 import com.ozalp.velorasports.ui.theme.Orange
 
@@ -81,7 +84,7 @@ fun LoginScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Email, // Buraya senin logon gelecek
+                        painter = painterResource(id = R.drawable.logo_v),
                         contentDescription = "Logo",
                         tint = Color.White,
                         modifier = Modifier.size(22.dp)
@@ -89,7 +92,7 @@ fun LoginScreen(
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "FitManage",
+                    text = stringResource(id = R.string.app_name),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )

@@ -19,10 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.ozalp.velorasports.R
 
 @Composable
 fun ChooseOrganizationScreen() {
@@ -143,14 +145,14 @@ fun LogoSection() {
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                painter = painterResource(id = android.R.drawable.ic_menu_compass),
+                painter = painterResource(id = R.drawable.logo_v),
                 contentDescription = null,
                 tint = Color.White,
                 modifier = Modifier.size(28.dp)
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "FitManage", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+        Text(text = stringResource(id = R.string.app_name), fontWeight = FontWeight.Bold, fontSize = 20.sp)
     }
 }
 

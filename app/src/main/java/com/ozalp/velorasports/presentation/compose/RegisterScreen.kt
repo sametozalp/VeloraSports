@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -84,14 +85,18 @@ fun RegisterScreen() {
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_launcher_foreground), // kendi ikonunuzu ekleyin
+                        painter = painterResource(id = R.drawable.logo_v),
                         contentDescription = "Logo",
                         tint = Color.White,
                         modifier = Modifier.size(24.dp)
                     )
                 }
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("FitManage", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    stringResource(id = R.string.app_name),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
             }
 
             // Card Container
