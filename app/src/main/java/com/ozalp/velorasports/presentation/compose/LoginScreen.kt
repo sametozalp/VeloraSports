@@ -1,5 +1,6 @@
 package com.ozalp.velorasports.presentation.compose
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,6 +32,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -54,7 +57,7 @@ import com.ozalp.velorasports.ui.theme.Orange
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
-    onLoginClick: () -> Unit = {},
+    onLogged: () -> Unit = {},
     onRegisterClick: () -> Unit = {},
     onForgotPasswordClick: () -> Unit = {},
 ) {
@@ -62,6 +65,19 @@ fun LoginScreen(
     var password by remember { mutableStateOf("") }
 
     //val textFieldBg = Color(0xFFF2F2F2)
+
+    LaunchedEffect(viewModel.loginState.athlete) {
+        if (viewModel.loginState.athlete != null) {
+            onLogged()
+        }
+    }
+
+    val context = LocalContext.current
+    LaunchedEffect(viewModel.loginState.error) {
+        if (viewModel.loginState.error != null && !viewModel.loginState.error.equals("")) {
+            Toast.makeText(context, viewModel.loginState.error, Toast.LENGTH_LONG).show()
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -140,7 +156,8 @@ fun LoginScreen(
                             focusedIndicatorColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent
                         ),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        enabled = !viewModel.loginState.isLoading
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
@@ -162,7 +179,8 @@ fun LoginScreen(
                             focusedIndicatorColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent
                         ),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        enabled = !viewModel.loginState.isLoading
                     )
 
 
@@ -173,19 +191,26 @@ fun LoginScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.End
                     ) {
-                        TextButton(onClick = onForgotPasswordClick, contentPadding = PaddingValues(0.dp)) {
+                        TextButton(
+                            onClick = onForgotPasswordClick,
+                            contentPadding = PaddingValues(0.dp),
+                            enabled = !viewModel.loginState.isLoading
+                        ) {
                             Text("Şifremi Unuttum", color = Orange, fontSize = 13.sp)
                         }
                     }
 
                     // Giriş Yap
                     Button(
-                        onClick = onLoginClick,
+                        onClick = {
+                            viewModel.login(email, password)
+                        },
                         colors = ButtonDefaults.buttonColors(containerColor = Orange),
                         shape = RoundedCornerShape(50),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(50.dp)
+                            .height(50.dp),
+                        enabled = !viewModel.loginState.isLoading
                     ) {
                         Text("Giriş Yap", color = Color.White, fontSize = 16.sp)
                     }
@@ -224,7 +249,10 @@ fun LoginScreen(
                     ) {
                         Text("Hesabın yok mu?", fontSize = 14.sp, color = Color.Gray)
                         Spacer(modifier = Modifier.width(4.dp))
-                        TextButton(onClick = onRegisterClick, contentPadding = PaddingValues(0.dp)) {
+                        TextButton(
+                            onClick = onRegisterClick,
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
                             Text("Kayıt Ol", color = Orange, fontSize = 14.sp)
                         }
                     }

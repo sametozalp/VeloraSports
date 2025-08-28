@@ -25,7 +25,6 @@ class RegisterViewModel @Inject constructor(val getUserUseCase: GetUserUseCase) 
 
             _registerState = RegisterState(isLoading = true)
 
-
             val result = getUserUseCase(createUserRequest)
 
             when (result) {

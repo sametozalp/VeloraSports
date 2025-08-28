@@ -43,7 +43,7 @@ fun SportCenterNavController(modifier: Modifier = Modifier) {
         ) {
 
             composable(LoginDestination.routeWithArgs) {
-                LoginScreen(onLoginClick = {
+                LoginScreen(onLogged = {
                     navController.navigate(ChooseOrganizationDestination.routeWithArgs)
                 }, onRegisterClick = {
                     navController.navigate(RegisterDestination.routeWithArgs)
