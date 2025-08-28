@@ -5,5 +5,5 @@ data class CreateUserRequest(
     val firstName: String,
     val lastName: String,
     val password: String,
-    val phone: String
+    val phone: String? = null
 )
