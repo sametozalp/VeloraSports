@@ -132,10 +132,13 @@ fun LoginScreen(
                         leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                         singleLine = true,
                         shape = RoundedCornerShape(12.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = LightGrayBg,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            focusedIndicatorColor = Color.Transparent
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = LightGrayBg,
+                            unfocusedContainerColor = LightGrayBg,
+                            disabledContainerColor = LightGrayBg,
+                            errorContainerColor = LightGrayBg,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
                         ),
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -151,13 +154,17 @@ fun LoginScreen(
                         singleLine = true,
                         visualTransformation = PasswordVisualTransformation(),
                         shape = RoundedCornerShape(12.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = LightGrayBg,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            focusedIndicatorColor = Color.Transparent
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = LightGrayBg,
+                            unfocusedContainerColor = LightGrayBg,
+                            disabledContainerColor = LightGrayBg,
+                            errorContainerColor = LightGrayBg,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
                         ),
                         modifier = Modifier.fillMaxWidth()
                     )
+
 
                     Spacer(modifier = Modifier.height(8.dp))
 
