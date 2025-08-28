@@ -233,11 +233,11 @@ fun RegisterScreen(
                         onClick = {
                             viewModel.createUser(
                                 CreateUserRequest(
-                                    "hvovpdpodfkplaalaaho@gmail.com",
+                                    "hvovpdgpodfkplaalaaho@gmail.com",
                                     "samret",
                                     "orzalp",
                                     "123465678",
-                                    "5341174564"
+                                    "5341179564"
                                 )
                             )
                         },
