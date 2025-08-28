@@ -11,10 +11,10 @@ import javax.inject.Inject
 class GetUserUseCase @Inject constructor(val userRepository: UserRepository) {
 
     suspend operator fun invoke(createUserRequest: CreateUserRequest): Resource<User> {
-        val response: Response<UserResponse> = userRepository.getUser(createUserRequest)
+        val response: Response<UserResponse>? = userRepository.getUser(createUserRequest)
 
-        return if (response.success) {
-            val body = response.userResponse
+        return if (response?.success == true) {
+            val body = response.data
             if (body != null) {
                 val user = User(
                     firstName = body.firstName,

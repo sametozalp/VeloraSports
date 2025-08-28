@@ -8,6 +8,6 @@ import retrofit2.http.POST
 
 interface UserAPI {
 
-    @POST("/user/create")
+    @POST("/api/user/create")
     suspend fun getUser(@Body createUserRequest: CreateUserRequest): Response<UserResponse>
 }

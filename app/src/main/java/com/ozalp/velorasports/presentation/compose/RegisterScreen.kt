@@ -209,7 +209,7 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                     // Create Account Button
                     Button(
                         onClick = {
-                            viewModel.createUser(CreateUserRequest("dsa@gmail.com","samet","ozalp","123465","5441234564"))
+                            viewModel.createUser(CreateUserRequest("hvovpddpaalaaho@gmail.com","samret","orzalp","123465678","5441234564"))
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = Orange),
                         shape = RoundedCornerShape(50),
