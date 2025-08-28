@@ -27,7 +27,8 @@ fun SportCenterNavController(modifier: Modifier = Modifier) {
     var showBottomBar by remember { mutableStateOf(false) }
     var showTopBar by remember { mutableStateOf(false) }
 
-    Scaffold(modifier = Modifier.fillMaxSize(),
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
         bottomBar = {
 
         }, topBar = {
@@ -51,7 +52,9 @@ fun SportCenterNavController(modifier: Modifier = Modifier) {
             }
 
             composable(RegisterDestination.routeWithArgs) {
-                RegisterScreen()
+                RegisterScreen(navigateLoginScreen = {
+                    navController.popBackStack()
+                })
 
             }
 

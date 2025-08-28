@@ -1,5 +1,7 @@
 package com.ozalp.velorasports.data.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.ozalp.velorasports.data.remote.api.UserAPI
 import com.ozalp.velorasports.data.repository.UserRepositoryImpl
 import com.ozalp.velorasports.domain.repository.UserRepository

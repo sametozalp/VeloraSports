@@ -1,5 +1,6 @@
 package com.ozalp.velorasports.presentation.compose
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,12 +25,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -51,15 +53,31 @@ import com.ozalp.velorasports.presentation.viewmodel.RegisterViewModel
 import com.ozalp.velorasports.ui.theme.Orange
 
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
+fun RegisterScreen(
+    viewModel: RegisterViewModel = hiltViewModel(),
+    navigateLoginScreen: () -> Unit
+) {
 
     val scrollState = rememberScrollState()
+    val context = LocalContext.current
 
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 //    var isAthlete by remember { mutableStateOf(true) }
+
+    LaunchedEffect(viewModel.registerState.success) {
+        if (viewModel.registerState.success == true) {
+            navigateLoginScreen()
+        }
+    }
+
+    LaunchedEffect(viewModel.registerState.error) {
+        if (viewModel.registerState.error != null && !viewModel.registerState.error.equals("")) {
+            Toast.makeText(context, viewModel.registerState.error, Toast.LENGTH_LONG).show()
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -133,7 +151,8 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                             placeholder = { Text("Ad") },
                             leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
                             modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(12.dp)
+                            shape = RoundedCornerShape(12.dp),
+                            enabled = !viewModel.registerState.isLoading
                         )
 
                         // surname input
@@ -143,7 +162,8 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                             placeholder = { Text("Soyad") },
                             leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
                             modifier = Modifier.weight(1f),
-                            shape = RoundedCornerShape(12.dp)
+                            shape = RoundedCornerShape(12.dp),
+                            enabled = !viewModel.registerState.isLoading
                         )
                     }
 
@@ -156,7 +176,8 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                         placeholder = { Text("example@mail.com") },
                         leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(12.dp),
+                        enabled = !viewModel.registerState.isLoading
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
@@ -169,7 +190,8 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                         visualTransformation = PasswordVisualTransformation(),
                         leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(12.dp),
+                        enabled = !viewModel.registerState.isLoading
                     )
 
 //                    Spacer(modifier = Modifier.height(20.dp))
@@ -209,13 +231,22 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                     // Create Account Button
                     Button(
                         onClick = {
-                            viewModel.createUser(CreateUserRequest("hvovpddpaalaaho@gmail.com","samret","orzalp","123465678","5441234564"))
+                            viewModel.createUser(
+                                CreateUserRequest(
+                                    "hvovpdpodfkplaalaaho@gmail.com",
+                                    "samret",
+                                    "orzalp",
+                                    "123465678",
+                                    "5341174564"
+                                )
+                            )
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = Orange),
                         shape = RoundedCornerShape(50),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(50.dp)
+                            .height(50.dp),
+                        enabled = !viewModel.registerState.isLoading
                     ) {
                         Text("Hesap Oluştur", fontSize = 16.sp)
                     }
